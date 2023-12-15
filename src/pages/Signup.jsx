@@ -33,6 +33,8 @@ const Signup = () => {
     }
   }
 
+  const handleGoogleSignup = async () => {}
+
   return (
     <Fragment>
       <Card className='p-2'>
@@ -82,6 +84,15 @@ const Signup = () => {
           </Form>
         </Card.Body>
       </Card>
+      <Button
+        disabled={loading}
+        variant='outline-dark'
+        className='w-100 my-2'
+        type='submit'
+        onClick={handleGoogleSignup}
+      >
+        Register with Google Account
+      </Button>
       <div className='w-100 text-center mt-2'>
         Already have an account?
         <Link to='/login' className='text-success mx-1'>

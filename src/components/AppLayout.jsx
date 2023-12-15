@@ -8,7 +8,7 @@ const AppLayout = () => {
       className='d-flex justify-content-center'
       style={{ minHeight: "100vh" }}
     >
-      <div className='w-100' style={{ maxWidth: "500px" }}>
+      <div className='w-100' style={{ maxWidth: "650px" }}>
         <Header />
         <Outlet />
       </div>

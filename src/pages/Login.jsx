@@ -11,7 +11,7 @@ const Login = () => {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
-  const { login } = useAuth()
+  const { login, loginWithGoogle } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,6 +23,19 @@ const Login = () => {
       navigate("/dashboard")
     } catch {
       setError("Failed to login!")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleGoogleLogin = async () => {
+    try {
+      setError("")
+      setLoading(true)
+      await loginWithGoogle()
+      navigate("/dashboard")
+    } catch {
+      setError("Failed to login via Google Account!")
     } finally {
       setLoading(false)
     }
@@ -73,6 +86,15 @@ const Login = () => {
           </div>
         </Card.Body>
       </Card>
+      <Button
+        disabled={loading}
+        variant='outline-dark'
+        className='w-100 my-2'
+        type='submit'
+        onClick={handleGoogleLogin}
+      >
+        Login with Google Account
+      </Button>
       <div className='w-100 text-center mt-2'>
         Need an account?
         <Link to='/signup' className='link-success mx-1'>
